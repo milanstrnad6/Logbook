@@ -6,13 +6,13 @@ def load(filename):
     # print("LOAD FROM FILENAME")
     # print(filename)
     with open(filename, 'r') as file:
-    return file.readlines()
+        return file.readlines()
 
 def save(filename,data):
     # print("SAVE TO FILENAME")
     # print(filename)
     with open(filename, 'w') as file:
-    file.writelines(data)
+        file.writelines(data)
 
 def loadline(filename,index):
     data = load(filename)
