@@ -4,15 +4,15 @@ import serial
 import time
 import POINTS
 
-ser = serial.Serial("/dev/ttyS0",115200)
-
-W_buff = ["AT+CGNSPWR=1\r\n", "AT+CGNSSEQ=\"RMC\"\r\n", "AT+CGNSINF\r\n", "AT+CGNSURC=2\r\n","AT+CGNSTST=1\r\n"]
-ser.write(W_buff[0])
-ser.flushInput()
-data = ""
-num = 0
-
 def start():
+        ser = serial.Serial("/dev/ttyS0",115200)
+
+        W_buff = ["AT+CGNSPWR=1\r\n", "AT+CGNSSEQ=\"RMC\"\r\n", "AT+CGNSINF\r\n", "AT+CGNSURC=2\r\n","AT+CGNSTST=1\r\n"]
+        ser.write(W_buff[0])
+        ser.flushInput()
+        data = ""
+        num = 0
+
         while True:
                 while ser.inWaiting() > 0:
                         data += ser.read(ser.inWaiting())
