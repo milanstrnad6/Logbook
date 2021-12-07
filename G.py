@@ -12,6 +12,9 @@ ser.flushInput()
 data = ""
 num = 0
 
+duration = 30 #WAIT FOR GPS
+time.sleep(duration)
+
 while True:
         while ser.inWaiting() > 0:
                 data += ser.read(ser.inWaiting())
