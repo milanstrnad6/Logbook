@@ -4,7 +4,7 @@ import datetime
 
 #PROPERTIES
 
-FORMAT = "%Y-%m-%d %H:%M"
+FORMAT = "%Y-%m-%d %H:%M:%S"
 
 #ACTIONS
 
