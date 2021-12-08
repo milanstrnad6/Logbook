@@ -48,7 +48,7 @@ def start():
                                                         print "E", eastValue
                                                         print " "
                                                         POINTS.savePoint(northValueAsString,eastValueAsString)
-                                                        REST.sendPoint(northValueAsString,eastValueAsString)
+                                                        #REST.sendPoint(northValueAsString,eastValueAsString)
                         if  num < 4:    # the string have ok
                                 print num
                                 time.sleep(0.5)
