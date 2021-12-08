@@ -3,15 +3,16 @@ import POINTS
 import time
 
 def start():
-	print "SENDING START"
+	print "REST – START"
 	while True:
 		try:
-			print("SENDING SLEEP")
-			time.sleep(3)
+			sleeptime = 10
+			print "REST – SLEEP FOR ", sleeptime
+			time.sleep(sleeptime)
 			buffer = POINTS.load_allEvents()
 			POINTS.reset()
-			print("SENDING SEND")
+			print("REST – SEND...")
 			REST.sendPoints(buffer)
 		except:
-			time.sleep(5)
+			time.sleep(10)
 			continue
