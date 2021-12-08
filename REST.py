@@ -5,7 +5,7 @@ import POINTS
 def sendPoints(pointsString):
 	dateString = TIMES.justDateAsString()
 	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/points/' + dateString + '.json'
-	jsonData = {dateString: pointsString}
+	jsonData = {'X': pointsString}
 
 	x = requests.patch(url, json=jsonData)
 
