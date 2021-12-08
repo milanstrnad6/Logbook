@@ -5,7 +5,7 @@ import TIMES
 
 #PROPERTIES
 
-FILENAME = '/home/pi/Desktop/Logbook/points.txt'
+FILENAME = '/home/pi/Desktop/Logbook2/Logbook/points.txt'
 
 #ACTIONS: LOAD
 
