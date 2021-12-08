@@ -5,9 +5,13 @@ import time
 def start():
 	print "SENDING START"
 	while True:
-		print("SENDING SLEEP")
-		time.sleep(3)
-		buffer = POINTS.load_allEvents()
-		POINTS.reset()
-		print("SENDING SEND")
-		REST.sendPoints(buffer)
+		try:
+			print("SENDING SLEEP")
+			time.sleep(3)
+			buffer = POINTS.load_allEvents()
+			POINTS.reset()
+			print("SENDING SEND")
+			REST.sendPoints(buffer)
+		except:
+			time.sleep(5)
+			continue
