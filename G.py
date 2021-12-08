@@ -25,30 +25,31 @@ def start():
                                 gnggaEnd = data.find("*",gnggaStart)
                                 gngga = data[gnggaStart:gnggaEnd]
                                 northIndex = gngga.find("N")
+                                eastIndex = gngga.find("E")
                                 if northIndex != -1:
-                                        northStart = northIndex-12
-                                        northEnd = northIndex-1
-                                        north = gngga[northStart:northEnd]
-                                        eastIndex = gngga.find("E")
-                                        eastStart = eastIndex-12
-                                        eastEnd = eastIndex-1
-                                        east = gngga[eastStart:eastEnd]
-                                        if north != -1:
-                                                if east != -1:
-                                                        northDegrees = float(north[0:2])
-                                                        northMinutes = float(north[2:])/60
-                                                        northValue = northDegrees+northMinutes
-                                                        northValueAsString = str(northValue)
-                                                        eastDegrees = float(east[0:2])
-                                                        eastMinutes = float(east[2:])/60
-                                                        eastValue = eastDegrees+eastMinutes
-                                                        eastValueAsString = str(eastValue)
-                                                        print " "
-                                                        print "N", northValue
-                                                        print "E", eastValue
-                                                        print " "
-                                                        POINTS.savePoint(northValueAsString,eastValueAsString)
-                                                        #REST.sendPoint(northValueAsString,eastValueAsString)
+                                        if eastIndex != -1:
+                                                northStart = northIndex-12
+                                                northEnd = northIndex-1
+                                                north = gngga[northStart:northEnd]
+                                                eastStart = eastIndex-12
+                                                eastEnd = eastIndex-1
+                                                east = gngga[eastStart:eastEnd]
+                                                if north != -1:
+                                                        if east != -1:
+                                                                northDegrees = float(north[0:2])
+                                                                northMinutes = float(north[2:])/60
+                                                                northValue = northDegrees+northMinutes
+                                                                northValueAsString = str(northValue)
+                                                                eastDegrees = float(east[0:2])
+                                                                eastMinutes = float(east[2:])/60
+                                                                eastValue = eastDegrees+eastMinutes
+                                                                eastValueAsString = str(eastValue)
+                                                                print " "
+                                                                print "N", northValue
+                                                                print "E", eastValue
+                                                                print " "
+                                                                POINTS.savePoint(northValueAsString,eastValueAsString)
+                                                                #REST.sendPoint(northValueAsString,eastValueAsString)
                         if  num < 4:    # the string have ok
                                 print num
                                 time.sleep(0.5)
