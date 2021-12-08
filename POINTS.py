@@ -20,7 +20,7 @@ def getPointString(north,east):
 def savePoint(north,east):
     data = FILES.load(FILENAME)
     point = getPointString(north,east)
-    data.append(record)
+    data.append(point)
     FILES.save(FILENAME,data)
 
 def reset():
