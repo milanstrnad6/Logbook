@@ -3,6 +3,7 @@
 import serial
 import time
 import POINTS
+import REST
 
 def start():
         ser = serial.Serial("/dev/ttyS0",115200)
@@ -47,6 +48,7 @@ def start():
                                                         print "E", eastValue
                                                         print " "
                                                         POINTS.savePoint(northValueAsString,eastValueAsString)
+                                                        REST.sendPoint(northValueAsString,eastValueAsString)
                         if  num < 4:    # the string have ok
                                 print num
                                 time.sleep(0.5)

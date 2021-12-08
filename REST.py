@@ -1,11 +1,13 @@
-from firebase import firebase
-firebase = firebase.FirebaseApplication('https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/', None)
-new_user = 'raspberry'
+import requests
+import TIMES
+import POINTS
 
-result = firebase.post('/users', new_user, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
-print result
-{u'name': u'-Io26123nDHkfybDIGl7'}
+def sendPoint(north,east):
+	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/days.json'
 
-result = firebase.post('/users', new_user, {'print': 'silent'}, {'X_FANCY_HEADER': 'VERY FANCY'})
-print result == None
-True
+	dateString = TIMES.stringFrom(TIMES.now())
+	point = POINTS.getPointString(north,east)
+	jsonData = {dateString: point}
+
+	x = requests.patch(url, json=jsonData)
+	#print(x.text)

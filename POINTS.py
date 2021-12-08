@@ -12,12 +12,14 @@ FILENAME = '/home/pi/Desktop/Logbook/points.txt'
 def load_allEvents():
     return FILES.load(FILENAME)
 
+def getPointString(north,east):
+    return "N" + north + "|" + "E" + east + "|" + TIMES.stringFrom(TIMES.now()) + "\n"
+
 #ACTIONS: SAVE
 
 def savePoint(north,east):
     data = FILES.load(FILENAME)
-    date = TIMES.now()
-    record = "N" + north + "|" + "E" + east + "|" + TIMES.stringFrom(date) + "\n"
+    point = getPointString(north,east)
     data.append(record)
     FILES.save(FILENAME,data)
 
