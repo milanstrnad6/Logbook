@@ -7,4 +7,3 @@ duration = 1
 time.sleep(duration)
 
 G.start()
-SENDING.start()
