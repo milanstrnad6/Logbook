@@ -9,6 +9,18 @@ FORMAT2 = "%Y-%m-%d"
 
 #ACTIONS
 
+def currentYear():
+	return datetime.datetime.now().year
+
+def currentMonth():
+	return datetime.datetime.now().month
+
+def currentWeek():
+	return datetime.datetime.now().isocalendar()[1]
+
+def currentDay():
+	return datetime.datetime.now().day
+
 def justDateAsString():
 	return datetime.datetime.now().strftime(FORMAT2)
 
