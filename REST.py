@@ -1,15 +1,37 @@
 import requests
 import TIMES
 import POINTS
+import LOGGER
 
-def updateBase(lastLocation):
-	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/base.json'
-	jsonData = {"lastLocation": lastLocation}
+def sendCurrentRide(rideUrlPath,rideKey):
+	print('sendCurrentRide...')
+	print('rideUrlPath=')
+	print(rideUrlPath)
+	print('rideKey')
+	print(rideKey)
+
+	ride = {"startAddress": "", "lastAddress": "", "lastTime": "", "totalDistance": 20}
+
+	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/rides/' + rideUrlPath + '.json'
+	print('url=')
+	print(url)
+	jsonData = {rideKey: ride}
 
 	x = requests.patch(url, json=jsonData)
+	statusCode = x.status_code
+	print('statusCode=')
+	print(statusCode)
+	if statusCode == 200:
+		LOGGER.setRideSent(1)
 
-def sendLocations(rideId, part, timestamp, locationsArray):
-	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/locations/' + rideId + '/' + 'part' + str(part) + '.json'
+def updateBase(numberOfRides, lastRideKey, lastRideUrlPath):
+	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/base.json'
+	jsonData = {"numberOfRides": numberOfRides, "lastRideKey": lastRideKey, "lastRideUrlPath": lastRideUrlPath}
+
+	response = requests.patch(url, json=jsonData)
+
+def sendLocations(rideKey, part, timestamp, locationsArray):
+	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/locations/' + rideKey + '/' + 'part' + str(part) + '.json'
 	jsonData = {timestamp: locationsArray}
 
 	x = requests.patch(url, json=jsonData)

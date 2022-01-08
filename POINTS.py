@@ -5,24 +5,33 @@ import TIMES
 
 #PROPERTIES
 
-FILENAME = '/home/pi/Desktop/Logbook2/Logbook/points.txt'
+FILENAME = 'points.txt'
 
 #ACTIONS: LOAD
 
 def load_allEvents():
     return FILES.load(FILENAME)
 
-def getPointString(north,east):
-    return "N" + north + "|" + "E" + east + "|" + TIMES.stringFrom(TIMES.now()) + "\n"
+def getClearPointString(rideKey):
+	return rideKey + "|" + TIMES.stringFrom(TIMES.now()) + "\n"
+
+def getPointString(rideKey,north,east):
+    return rideKey + "|" + "N" + north + "|" + "E" + east + "|" + TIMES.stringFrom(TIMES.now()) + "\n"
 
 #ACTIONS: SAVE
 
-def savePoint(north,east):
+def saveClearPoint(rideKey):
+	data = FILES.load(FILENAME)
+	point = getClearPointString(rideKey)
+	data.append(point)
+	FILES.save(FILENAME,data)
+
+def savePoint(rideKey,north,east):
     data = FILES.load(FILENAME)
-    point = getPointString(north,east)
+    point = getPointString(rideKey,north,east)
     data.append(point)
     FILES.save(FILENAME,data)
 
 def reset():
-    data = 'POINTS\n'
+    data = ""
     FILES.save(FILENAME,data)

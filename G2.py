@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# Filename: text.py
 import serial
 import time
 import POINTS
@@ -5,9 +7,10 @@ import REST
 import GPSENABLER
 import LOGGER
 
+start()
+
 def start():
         LOGGER.logNewRide()
-        rideKey = LOGGER.rideKey()
 
         GPSENABLER.enable()
         time.sleep(2)
@@ -23,7 +26,7 @@ def start():
                 while ser.inWaiting() > 0:
                         data += ser.read(ser.inWaiting())
                 if data != "":
-                        print data
+                        print(data)
                         gnggaIndex = data.find("GNGGA")
                         if gnggaIndex != -1:
                                 gnggaStart = gnggaIndex+5
@@ -49,27 +52,20 @@ def start():
                                                                 eastMinutes = float(east[2:])/60
                                                                 eastValue = eastDegrees+eastMinutes
                                                                 eastValueAsString = str(eastValue)
-                                                                print " "
-                                                                print "N", northValue
-                                                                print "E", eastValue
-                                                                print " "
-                                                                POINTS.savePoint(rideKey,northValueAsString,eastValueAsString)
-                                                        else:
-                                                                POINTS.saveClearPoint(rideKey)
-                                                else:
-                                                        POINTS.saveClearPoint(rideKey)
-                                        else:
-                                                POINTS.saveClearPoint(rideKey)
-                                else:
-                                        POINTS.saveClearPoint(rideKey)
+                                                                POINTS.savePoint(northValueAsString,eastValueAsString)
+                                                                #REST.sendPoint(northValueAsString,eastValueAsString)
                         else:
-                                POINTS.saveClearPoint(rideKey)
-                        if  num < 4: # the string have ok
-                                print num
+                                POINTS.savePoint(northValueAsString,eastValueAsString)
+                        if  num < 4:    # the string have ok
+                                print(num)
                                 time.sleep(0.5)
                                 ser.write(W_buff[num+1])
-                                num = num +1
+                                num =num +1
                         if num == 4:
+                                print('num == 4')
                                 time.sleep(0.5)
                                 ser.write(W_buff[4])
                         data = ""
+
+#MAIN
+#start()

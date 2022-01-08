@@ -2,6 +2,15 @@
 
 #ACTIONS
 
+def resetWithData(filename,data):
+    with open(filename, 'w') as file:
+        file.writelines(data)
+
+def reset(filename):
+    data = ""
+    with open(filename, 'w') as file:
+        file.writelines(data)
+
 def load(filename):
     # print("LOAD FROM FILENAME")
     # print(filename)
