@@ -10,7 +10,7 @@ def sendCurrentRide(rideUrlPath,rideKey):
 	print('rideKey')
 	print(rideKey)
 
-	ride = {"startAddress": "", "lastAddress": "", "lastTime": "", "totalDistance": 20}
+	ride = {"startAddress": "", "lastAddress": "", "lastTime": "", "totalDistance": 10}
 
 	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/rides/' + rideUrlPath + '.json'
 	print('url=')

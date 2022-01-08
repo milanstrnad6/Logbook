@@ -30,12 +30,12 @@ def setRideSent(sent):
     FILES.saveline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_RIDESENT,rideSent)
 
 def rideUrlPath():
-    return "2021/1/1/7"
-    #return FILES.loadline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_RIDEURLPATH).rstrip("\n")
+    #return "2021/1/1/7"
+    return FILES.loadline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_RIDEURLPATH).rstrip("\n")
 
 def rideKey():
-    return "2021-01-07 19:54:43"
-    #return FILES.loadline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_RIDEKEY).rstrip("\n")
+    #return "2021-01-07 19:54:43"
+    return FILES.loadline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_RIDEKEY).rstrip("\n")
 
 def rideSent():
     rideSent = FILES.loadline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_RIDESENT).rstrip("\n")
