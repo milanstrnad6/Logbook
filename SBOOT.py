@@ -1,6 +1,6 @@
 import SENDING
 import time
 
-duration = 30
+duration = 10
 time.sleep(duration)
 SENDING.start()

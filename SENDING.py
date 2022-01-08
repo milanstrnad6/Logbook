@@ -22,8 +22,10 @@ def start():
                         rideSent = LOGGER.rideSent()
                         if rideSent == 0:
                                 rideUrlPath = LOGGER.rideUrlPath()
+                                print("SEND CURRENT RIDE...")
                                 REST.sendCurrentRide(rideUrlPath,rideKey)
                                 numberOfRides = LOGGER.numberOfRides()
+                                print("UPDATE BASE...")
                                 REST.updateBase(numberOfRides, rideKey, rideUrlPath)
 
                         buffer = POINTS.load_allEvents()
