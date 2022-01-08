@@ -44,3 +44,7 @@ def rideSent():
 def numberOfRides():
     numberOfRides = FILES.loadline(FILENAME_BASE,FILENAME_BASE_ROW_NUMBEROFRIDES)
     return int(numberOfRides)
+
+def resetBaseFile():
+    data = "0"
+    FILES.save(FILENAME_BASE,data)

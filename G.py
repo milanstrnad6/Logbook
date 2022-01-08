@@ -9,9 +9,11 @@ def start():
         LOGGER.logNewRide()
         rideKey = LOGGER.rideKey()
 
+        print("GPSENABLER enable()")
         GPSENABLER.enable()
-        time.sleep(2)
+        time.sleep(3)
 
+        print("SETUP SERIAL")
         ser = serial.Serial("/dev/ttyS0",115200)
         W_buff = ["AT+CGNSPWR=1\r\n", "AT+CGNSSEQ=\"RMC\"\r\n", "AT+CGNSINF\r\n", "AT+CGNSURC=2\r\n","AT+CGNSTST=1\r\n"]
         ser.write(W_buff[0])
@@ -19,9 +21,11 @@ def start():
         data = ""
         num = 0
 
+        print("BEFORE TRUE")
         while True:
                 while ser.inWaiting() > 0:
                         data += ser.read(ser.inWaiting())
+                        POINTS.saveClearPoint(rideKey)
                 if data != "":
                         print data
                         gnggaIndex = data.find("GNGGA")
@@ -73,3 +77,5 @@ def start():
                                 time.sleep(0.5)
                                 ser.write(W_buff[4])
                         data = ""
+                else:
+                        POINTS.saveClearPoint(rideKey)
