@@ -2,14 +2,12 @@ import FILES
 import TIMES
 import VALUES
 
-#FILENAME_CURRENT_RIDE = '/home/pi/Desktop/Logbook2/Logbook/currentRide.txt'
-
-FILENAME_CURRENT_RIDE = 'currentRide.txt'
+FILENAME_CURRENT_RIDE = '/home/pi/Desktop/Logbook4/Logbook/currentRide.txt'
 FILENAME_CURRENT_RIDE_ROW_INDEX_RIDEURLPATH = 0
 FILENAME_CURRENT_RIDE_ROW_INDEX_RIDEKEY = 1
 FILENAME_CURRENT_RIDE_ROW_INDEX_RIDESENT = 2
 
-FILENAME_BASE = 'base.txt'
+FILENAME_BASE = '/home/pi/Desktop/Logbook4/Logbook/base.txt'
 FILENAME_BASE_ROW_NUMBEROFRIDES = 0
 
 def logNewRide():
