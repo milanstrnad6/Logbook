@@ -21,7 +21,7 @@ def save(filename,data):
 
 def append(filename,data):
     currentData = load(filename)
-    newData = currentData + data
+    newData = currentData + str(data)
     save(filename,newData)
 
 def loadline(filename,index):
