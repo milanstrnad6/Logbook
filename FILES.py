@@ -25,7 +25,7 @@ def append(filename,data):
     print(currentData)
     print("\ndata=")
     print(data)
-    newData = currentData + str(data)
+    newData = currentData + [data]
     save(filename,newData)
 
 def loadline(filename,index):
