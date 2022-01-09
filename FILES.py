@@ -21,6 +21,10 @@ def save(filename,data):
 
 def append(filename,data):
     currentData = load(filename)
+    print("\ncurrentData=")
+    print(currentData)
+    print("\ndata=")
+    print(data)
     newData = currentData + str(data)
     save(filename,newData)
 
