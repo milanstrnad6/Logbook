@@ -12,23 +12,23 @@ FILENAME = '/home/pi/Desktop/Logbook4/Logbook/points.txt'
 def load_allEvents():
     return FILES.load(FILENAME)
 
-def getClearPointString(rideKey):
-	return rideKey + "|" + TIMES.stringFrom(TIMES.now()) + "\n"
+def getNOLOCATIONString(rideKey):
+	return rideKey + "|NOLOCATION|" + TIMES.stringFrom(TIMES.now()) + "\n"
 
-def getPointString(rideKey,north,east):
-    return rideKey + "|" + "N" + north + "|" + "E" + east + "|" + TIMES.stringFrom(TIMES.now()) + "\n"
+def getPOINTString(rideKey,north,east):
+    return rideKey + "N" + north + "|" + "E" + east + "|" + TIMES.stringFrom(TIMES.now()) + "\n"
 
 #ACTIONS: SAVE
 
-def saveClearPoint(rideKey):
+def saveNOLOCATION(rideKey):
 	data = FILES.load(FILENAME)
-	point = getClearPointString(rideKey)
+	point = getNOLOCATIONString(rideKey)
 	data.append(point)
 	FILES.save(FILENAME,data)
 
-def savePoint(rideKey,north,east):
+def savePOINT(rideKey,north,east):
     data = FILES.load(FILENAME)
-    point = getPointString(rideKey,north,east)
+    point = getPOINTString(rideKey,north,east)
     data.append(point)
     FILES.save(FILENAME,data)
 

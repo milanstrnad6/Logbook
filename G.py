@@ -32,7 +32,6 @@ def start():
         while True:
                 while ser.inWaiting() > 0:
                         data += ser.read(ser.inWaiting())
-                        POINTS.saveClearPoint(rideKey)
                 if data != "":
                         print data
                         gnggaIndex = data.find("GNGGA")
@@ -64,17 +63,17 @@ def start():
                                                                 print "N", northValue
                                                                 print "E", eastValue
                                                                 print " "
-                                                                POINTS.savePoint(rideKey,northValueAsString,eastValueAsString)
+                                                                POINTS.savePOINT(rideKey,northValueAsString,eastValueAsString)
                                                         else:
-                                                                POINTS.saveClearPoint(rideKey)
+                                                                POINTS.saveNOLOCATION(rideKey)
                                                 else:
-                                                        POINTS.saveClearPoint(rideKey)
+                                                        POINTS.saveNOLOCATION(rideKey)
                                         else:
-                                                POINTS.saveClearPoint(rideKey)
+                                                POINTS.saveNOLOCATION(rideKey)
                                 else:
-                                        POINTS.saveClearPoint(rideKey)
+                                        POINTS.saveNOLOCATION(rideKey)
                         else:
-                                POINTS.saveClearPoint(rideKey)
+                                POINTS.saveNOLOCATION(rideKey)
                         if  num < 4: # the string have ok
                                 print num
                                 time.sleep(0.5)
@@ -84,5 +83,3 @@ def start():
                                 time.sleep(0.5)
                                 ser.write(W_buff[4])
                         data = ""
-                else:
-                        POINTS.saveClearPoint(rideKey)

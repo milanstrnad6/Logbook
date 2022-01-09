@@ -4,23 +4,13 @@ import POINTS
 import LOGGER
 
 def sendCurrentRide(rideUrlPath,rideKey):
-	#print('sendCurrentRide...')
-	#print('rideUrlPath=')
-	#print(rideUrlPath)
-	#print('rideKey')
-	#print(rideKey)
-
 	ride = {"startAddress": "", "lastAddress": "", "lastTime": "", "totalDistance": 10}
 
 	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/rides/' + rideUrlPath + '.json'
-	#print('url=')
-	#print(url)
 	jsonData = {rideKey: ride}
 
 	x = requests.patch(url, json=jsonData)
 	statusCode = x.status_code
-	#print('statusCode=')
-	#print(statusCode)
 	if statusCode == 200:
 		LOGGER.setRideSent(1)
 
@@ -67,4 +57,3 @@ def sendPoint(north,east):
 	jsonData = {dateString: point}
 
 	x = requests.patch(url, json=jsonData)
-	#print(x.text)
