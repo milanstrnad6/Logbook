@@ -36,6 +36,7 @@ def start():
                         print data
                         gnggaIndex = data.find("GNGGA")
                         if gnggaIndex != -1:
+                                print("GNGGA OK")
                                 gnggaStart = gnggaIndex+5
                                 gnggaEnd = data.find("*",gnggaStart)
                                 gngga = data[gnggaStart:gnggaEnd]
@@ -64,16 +65,8 @@ def start():
                                                                 print "E", eastValue
                                                                 print " "
                                                                 POINTS.savePOINT(rideKey,northValueAsString,eastValueAsString)
-                                                        else:
-                                                                POINTS.saveNOLOCATION(rideKey)
-                                                else:
-                                                        POINTS.saveNOLOCATION(rideKey)
-                                        else:
-                                                POINTS.saveNOLOCATION(rideKey)
-                                else:
-                                        POINTS.saveNOLOCATION(rideKey)
                         else:
-                                POINTS.saveNOLOCATION(rideKey)
+                                print("GNGGS NOT PRESENT")
                         if  num < 4: # the string have ok
                                 print num
                                 time.sleep(0.5)

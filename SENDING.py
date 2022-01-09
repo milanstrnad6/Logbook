@@ -15,7 +15,7 @@ def start():
                 try:
                         time.sleep(10)
                         cycle = cycle + 1
-                        if cyclesForPart >= cycle:
+                        if cycle >= cyclesForPart:
                                 cycle = 0
                                 part = part + 1
 
