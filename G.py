@@ -4,15 +4,21 @@ import POINTS
 import REST
 import GPSENABLER
 import LOGGER
+import DEBUG
 
 def start():
+        DEBUG.log("G.py start()|")
         LOGGER.logNewRide()
         rideKey = LOGGER.rideKey()
 
+        DEBUG.log("GPSENABLER.enable()|")
         print("GPSENABLER enable()")
         GPSENABLER.enable()
-        time.sleep(3)
+        DEBUG.log("G.py sleep for 4s|")
+        time.sleep(4)
+        DEBUG.log("G.py after sleep")
 
+        DEBUG.log("SETUP SERIAL")
         print("SETUP SERIAL")
         ser = serial.Serial("/dev/ttyS0",115200)
         W_buff = ["AT+CGNSPWR=1\r\n", "AT+CGNSSEQ=\"RMC\"\r\n", "AT+CGNSINF\r\n", "AT+CGNSURC=2\r\n","AT+CGNSTST=1\r\n"]
@@ -20,6 +26,7 @@ def start():
         ser.flushInput()
         data = ""
         num = 0
+        DEBUG.log("SETUP SERIAL DONE")
 
         print("BEFORE TRUE")
         while True:
