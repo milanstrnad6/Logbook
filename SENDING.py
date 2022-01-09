@@ -5,8 +5,6 @@ import LOGGER
 import TIMES
 
 def start():
-        rideKey = LOGGER.rideKey()
-
         cyclesForPart = 360 # 360 = 360*10 seconds = 3600 seconds = 60 minutes = 1 hour
         part = 1
         cycle = 0
@@ -14,6 +12,7 @@ def start():
         while True:
                 try:
                         time.sleep(10)
+
                         cycle = cycle + 1
                         if cycle >= cyclesForPart:
                                 cycle = 0
@@ -23,6 +22,7 @@ def start():
                         if rideSent == 0:
                                 rideUrlPath = LOGGER.rideUrlPath()
                                 print("SEND CURRENT RIDE...")
+                                rideKey = LOGGER.rideKey()
                                 REST.sendCurrentRide(rideUrlPath,rideKey)
                                 numberOfRides = LOGGER.numberOfRides()
                                 print("UPDATE BASE...")
@@ -31,6 +31,7 @@ def start():
                         buffer = POINTS.load_allEvents()
                         timestamp = TIMES.nowAsString()
                         POINTS.reset()
+                        rideKey = LOGGER.rideKey()
                         REST.sendLocations(rideKey, part, timestamp, buffer)
                 except:
                         time.sleep(10)
