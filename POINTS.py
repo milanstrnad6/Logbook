@@ -40,6 +40,14 @@ def updateDISTANCE(northValue,eastValue):
     lastE = LOGGER.lastE
     if lastN != 0.0:
         coord1 = (lastN, lastE)
+        print("LAST N=")
+        print(lastN)
+        print("LAST E=")
+        print(lastE)
+        print("northValue=")
+        print(northValue)
+        print("eastValue=")
+        print(eastValue)
         coord2 = (northValue, eastValue)
         result = geopy.distance.geodesic(coord1, coord2)
         newDistance = distance + result
