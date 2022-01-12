@@ -36,8 +36,8 @@ def savePOINT(rideKey,north,east):
 
 def updateDISTANCE(northValue,eastValue):
     distance = LOGGER.distance
-    lastN = LOGGER.lastN
-    lastE = LOGGER.lastE
+    lastN = LOGGER.lastN()
+    lastE = LOGGER.lastE()
     if lastN != 0.0:
         coord1 = (lastN, lastE)
         print("LAST N=")
