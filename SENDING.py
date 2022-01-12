@@ -28,18 +28,12 @@ def start():
                                 REST.updateBase(numberOfRides, rideKey, rideUrlPath)
 
                         buffer = POINTS.load_allEvents()
-                        print("BUFFER =")
-                        print(buffer)
-                        print("BUFFER LENGTH =")
                         bufferLength = len(buffer)
-                        print(bufferLength)
                         if bufferLength >= 1:
                                 firstLocationSent = LOGGER.firstLocationSent()
                                 if firstLocationSent == 0:
                                         firstLocation = buffer[0]
-                                        print("FIRST LOCATION =")
-                                        print(firstLocation)
-                                        REST.sendFirstLocation(firstLocation)
+                                        REST.sendFirstLocation(rideKey, firstLocation)
                                         LOGGER.setFirstLocationSent(1)
 
                                 timestamp = TIMES.nowAsString()

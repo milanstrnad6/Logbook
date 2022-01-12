@@ -12,7 +12,7 @@ def sendCurrentRide(rideUrlPath,rideKey):
 	if statusCode == 200:
 		LOGGER.setRideSent(1)
 
-def sendFirstLocation(firstLocation):
+def sendFirstLocation(rideKey, firstLocation):
 	print("sendFirstLocation...")
 	ride = {"firstLocation": firstLocation}
 	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/rides/' + rideUrlPath + '.json'
@@ -21,8 +21,6 @@ def sendFirstLocation(firstLocation):
 	statusCode = x.status_code
 	print("statusCode=")
 	print(statusCode)
-	if statusCode == 200:
-		print("SUCCESS!")
 
 def updateBase(numberOfRides, lastRideKey, lastRideUrlPath):
 	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/base.json'
