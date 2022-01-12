@@ -7,4 +7,4 @@ def rideUrlPath():
     return year + '/' + month + '/' + day
 
 def rideKey():
-    return rideUrlPath() + '|' + TIMES.nowAsString()
+    return TIMES.nowAsString()
