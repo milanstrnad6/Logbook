@@ -27,7 +27,7 @@ def updateBase(numberOfRides, lastRideKey, lastRideUrlPath):
 	response = requests.patch(url, json=jsonData)
 
 def sendLocations(rideKey, part, timestamp, locationsArray):
-	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/locations/' + rideKey + '/' + 'part' + str(part) + '.json'
+	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/locations/' + rideKey + '/' + 'part1' + '.json'
 	jsonData = {timestamp: locationsArray}
 	x = requests.patch(url, json=jsonData)
 
