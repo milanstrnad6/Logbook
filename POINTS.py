@@ -53,8 +53,10 @@ def updateDISTANCE(northValue,eastValue):
         coord2 = (northValue, eastValue)
         result = geopy.distance.geodesic(coord1, coord2)
         print("RESULT=")
-        print(result)
+        print(result.m)
         newDistance = distance + result.m
+        print("NEW DISTANCE=")
+        print(newDistance)
         LOGGER.setDistance(newDistance)
     else:
         LOGGER.setLastN(northValue)
