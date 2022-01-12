@@ -5,7 +5,7 @@ import LOGGER
 import TIMES
 
 def start():
-        cyclesForPart = 100000 # 360 = 360*10 seconds = 3600 seconds = 60 minutes = 1 hour
+        cyclesForPart = 360 # 360 = 360*10 seconds = 3600 seconds = 60 minutes = 1 hour
         part = 1
         cycle = 0
 
@@ -16,7 +16,7 @@ def start():
                         cycle = cycle + 1
                         if cycle >= cyclesForPart:
                                 cycle = 0
-                                part = part + 1
+                                #part = part + 1
 
                         rideUrlPath = LOGGER.rideUrlPath()
                         rideKey = LOGGER.rideKey()
