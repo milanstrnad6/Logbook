@@ -78,13 +78,11 @@ def numberOfRides():
 
 def lastN():
     lastN = FILES.loadline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_LASTN).rstrip("\n")
-    print("GET LAST N=")
     print(lastN)
     return float(lastN)
 
 def lastE():
     lastE = FILES.loadline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_LASTE).rstrip("\n")
-    print("GET LAST E=")
     print(lastE)
     return float(lastE)
 

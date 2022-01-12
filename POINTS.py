@@ -36,31 +36,31 @@ def savePOINT(rideKey,north,east):
 
 def updateDISTANCE(northValue,eastValue):
     distance = LOGGER.distance()
-    print("DISTANCE=")
-    print(distance)
+    #print("SAVED DISTANCE=")
+    #print(distance)
     lastN = LOGGER.lastN()
     lastE = LOGGER.lastE()
     if lastN != 0.0:
         coord1 = (lastN, lastE)
         print("LAST N=")
         print(lastN)
+        print("NOW N=")
+        print(northValue)
         print("LAST E=")
         print(lastE)
-        print("northValue=")
-        print(northValue)
-        print("eastValue=")
+        print("NOW E=")
         print(eastValue)
         coord2 = (northValue, eastValue)
         result = geopy.distance.geodesic(coord1, coord2)
-        print("RESULT=")
+        print("CALC=")
         print(result.m)
         newDistance = distance + result.m
-        print("NEW DISTANCE=")
+        print("NEW SUM=")
         print(newDistance)
         LOGGER.setDistance(newDistance)
-    else:
-        LOGGER.setLastN(northValue)
-        LOGGER.setLastE(eastValue)
+    
+    LOGGER.setLastN(northValue)
+    LOGGER.setLastE(eastValue)    
 
 def reset():
     data = ""
