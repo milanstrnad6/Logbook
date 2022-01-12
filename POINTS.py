@@ -2,6 +2,8 @@
 
 import FILES
 import TIMES
+import LOGGER
+import geopy.distance
 
 #PROPERTIES
 
@@ -31,6 +33,20 @@ def savePOINT(rideKey,north,east):
     point = getPOINTString(rideKey,north,east)
     data.append(point)
     FILES.save(FILENAME,data)
+
+def updateDISTANCE(northValue,eastValue):
+    distance = LOGGER.distance
+    lastN = LOGGER.lastN
+    lastE = LOGGER.lastE
+    if lastN != 0.0:
+        coord1 = (lastN, lastE)
+        coord2 = (northValue, eastValue)
+        result = geopy.distance.geodesic(coord1, coord2)
+        newDistance = distance + result
+        LOGGER.setDistance(newDistance)
+    else:
+        LOGGER.setLastN(northValue)
+        LOGGER.setLastE(eastValue)
 
 def reset():
     data = ""

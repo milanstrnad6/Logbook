@@ -65,6 +65,7 @@ def start():
                                                                 print "E", eastValue
                                                                 print " "
                                                                 POINTS.savePOINT(rideKey,northValueAsString,eastValueAsString)
+                                                                POINTS.updateDISTANCE(northValue,eastValue)
                         else:
                                 print("GNGGA NOT PRESENT")
                         if  num < 4: # the string have ok

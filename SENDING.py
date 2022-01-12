@@ -3,6 +3,7 @@ import POINTS
 import time
 import LOGGER
 import TIMES
+import geopy.distance
 
 def start():
         cyclesForPart = 360 # 360 = 360*10 seconds = 3600 seconds = 60 minutes = 1 hour
@@ -40,6 +41,9 @@ def start():
                                 POINTS.reset()
                                 rideKey = LOGGER.rideKey()
                                 REST.sendLocations(rideKey, 1, timestamp, buffer)
+
+                                distance = LOGGER.distance()
+                                REST.updateDistance(rideUrlPath, rideKey, distance)
                 except:
                         time.sleep(10)
                         continue

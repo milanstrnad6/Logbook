@@ -21,14 +21,13 @@ def sendFirstLocation(rideUrlPath, rideKey, firstLocation):
 	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/rides/' + rideUrlPath + '/' + rideKey + '.json'
 	jsonData = {"firstLocation": firstLocation}
 	x = requests.patch(url, json=jsonData)
-	statusCode = x.status_code
 
 def sendLocations(rideKey, part, timestamp, locationsArray):
-	print("SEND LOCATIONS...")
-	print(rideKey)
-	print(part)
-	print(timestamp)
-	print(locationsArray)
 	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/locations/' + rideKey + '/' + 'part1' + '.json'
 	jsonData = {timestamp: locationsArray}
+	x = requests.patch(url, json=jsonData)
+
+def updateDistance(rideUrlPath, rideKey, distance):
+	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/rides/' + rideUrlPath + '/' + rideKey + '.json'
+	jsonData = {"totalDistance": distance}
 	x = requests.patch(url, json=jsonData)
