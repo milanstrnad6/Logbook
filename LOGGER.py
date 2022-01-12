@@ -12,13 +12,15 @@ FILENAME_BASE = '/home/pi/Desktop/Logbook4/Logbook/base.txt'
 FILENAME_BASE_ROW_NUMBEROFRIDES = 0
 
 def logNewRide():
-    FILES.resetWithData(FILENAME_CURRENT_RIDE,"0\n1\n2\n")
+    FILES.resetWithData(FILENAME_CURRENT_RIDE,"0\n1\n2\n3\n")
     rideUrlPath = VALUES.rideUrlPath()
     rideKey = VALUES.rideKey()
     rideSent = "0"
+    firstLocationSent = "0"
     FILES.saveline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_RIDEURLPATH,rideUrlPath)
     FILES.saveline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_RIDEKEY,rideKey)
     FILES.saveline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_RIDESENT,rideSent)
+    FILES.saveline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_FIRSTLOCATIONSENT,firstLocationSent)
 
     newNumberOfRides = numberOfRides() + 1
     newNumberOfRidesAsString = str(newNumberOfRides)
