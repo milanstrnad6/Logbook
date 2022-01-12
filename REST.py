@@ -14,9 +14,8 @@ def sendCurrentRide(rideUrlPath,rideKey):
 
 def sendFirstLocation(rideUrlPath, rideKey, firstLocation):
 	print("sendFirstLocation...")
-	ride = {"firstLocation": firstLocation}
-	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/rides/' + rideUrlPath + '.json'
-	jsonData = {rideKey: ride}
+	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/rides/' + rideUrlPath + '/' + rideKey + '.json'
+	jsonData = {"firstLocation": firstLocation}
 	x = requests.patch(url, json=jsonData)
 	statusCode = x.status_code
 	print("statusCode=")

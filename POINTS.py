@@ -13,10 +13,10 @@ def load_allEvents():
     return FILES.load(FILENAME)
 
 def getNOLOCATIONString(rideKey):
-	return rideKey + "|NOLOCATION|" + TIMES.stringFrom(TIMES.now()) + "\n"
+	return "|NOLOCATION|" + TIMES.stringFrom(TIMES.now()) + "\n"
 
 def getPOINTString(rideKey,north,east):
-    return rideKey + "N" + north + "|" + "E" + east + "|" + TIMES.stringFrom(TIMES.now()) + "\n"
+    return "N" + north + "|" + "E" + east + "|" + TIMES.stringFrom(TIMES.now()) + "\n"
 
 #ACTIONS: SAVE
 
