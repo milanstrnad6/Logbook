@@ -5,7 +5,7 @@ import LOGGER
 import TIMES
 
 def start():
-        cyclesForPart = 360 # 360 = 360*10 seconds = 3600 seconds = 60 minutes = 1 hour
+        cyclesForPart = 100000 # 360 = 360*10 seconds = 3600 seconds = 60 minutes = 1 hour
         part = 1
         cycle = 0
 
