@@ -41,26 +41,32 @@ def updateDISTANCE(northValue,eastValue):
     lastN = LOGGER.lastN()
     lastE = LOGGER.lastE()
     if lastN != 0.0:
-        coord1 = (lastN, lastE)
-        print("LAST N=")
-        print(lastN)
-        print("NOW N=")
-        print(northValue)
-        print("LAST E=")
-        print(lastE)
-        print("NOW E=")
-        print(eastValue)
-        coord2 = (northValue, eastValue)
-        result = geopy.distance.geodesic(coord1, coord2)
-        print("CALC=")
-        print(result.m)
-        newDistance = distance + result.m
-        print("NEW SUM=")
-        print(newDistance)
-        LOGGER.setDistance(newDistance)
+        if lastN != northValue:
+            if lastE != eastValue:
+                coord1 = (lastN, lastE)
+                print("LAST N=")
+                print(lastN)
+                print("NOW N=")
+                print(northValue)
+                print("LAST E=")
+                print(lastE)
+                print("NOW E=")
+                print(eastValue)
+                coord2 = (northValue, eastValue)
+                result = geopy.distance.geodesic(coord1, coord2)
+                print("CALC=")
+                print(result.m)
+                newDistance = distance + result.m
+                print("NEW SUM=")
+                print(newDistance)
+                LOGGER.setDistance(newDistance)
+            else:
+                print("LE = E")
+        else:
+            print("LN = N")
     
     LOGGER.setLastN(northValue)
-    LOGGER.setLastE(eastValue)    
+    LOGGER.setLastE(eastValue)
 
 def reset():
     data = ""
