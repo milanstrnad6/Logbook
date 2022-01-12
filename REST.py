@@ -13,10 +13,14 @@ def sendCurrentRide(rideUrlPath,rideKey):
 		LOGGER.setRideSent(1)
 
 def sendFirstLocation(firstLocation):
+	print("sendFirstLocation...")
 	ride = {"firstLocation": firstLocation}
 	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/rides/' + rideUrlPath + '.json'
 	jsonData = {rideKey: ride}
 	x = requests.patch(url, json=jsonData)
+	statusCode = x.status_code
+	if statusCode == 200:
+		print("SUCCESS!")
 
 def updateBase(numberOfRides, lastRideKey, lastRideUrlPath):
 	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/base.json'
