@@ -33,7 +33,7 @@ def start():
                 while ser.inWaiting() > 0:
                         data += ser.read(ser.inWaiting())
                 if data != "":
-                        print data
+                        #print data
                         gnggaIndex = data.find("GNGGA")
                         if gnggaIndex != -1:
                                 print("GNGGA OK")
