@@ -4,7 +4,7 @@ import POINTS
 import LOGGER
 
 def sendCurrentRide(rideUrlPath,rideKey):
-	ride = {"startAddress": "", "lastAddress": "", "lastTime": "", "totalDistance": 10}
+	ride = {"totalDistance": 0}
 
 	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/rides/' + rideUrlPath + '.json'
 	jsonData = {rideKey: ride}
