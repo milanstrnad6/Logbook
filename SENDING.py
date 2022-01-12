@@ -39,13 +39,7 @@ def start():
                                 timestamp = TIMES.nowAsString()
                                 POINTS.reset()
                                 rideKey = LOGGER.rideKey()
-                                REST.sendLocations(rideKey, part, timestamp, buffer)
+                                REST.sendLocations(rideKey, 1, timestamp, buffer)
                 except:
                         time.sleep(10)
                         continue
-
-def testSend(rideKey,part):
-        buffer = POINTS.load_allEvents()
-        timestamp = TIMES.nowAsString()
-        POINTS.reset()
-        REST.sendLocations(rideKey, part, timestamp, buffer)
