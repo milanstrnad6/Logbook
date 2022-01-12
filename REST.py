@@ -19,6 +19,8 @@ def sendFirstLocation(firstLocation):
 	jsonData = {rideKey: ride}
 	x = requests.patch(url, json=jsonData)
 	statusCode = x.status_code
+	print("statusCode=")
+	print(statusCode)
 	if statusCode == 200:
 		print("SUCCESS!")
 
