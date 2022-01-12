@@ -5,25 +5,27 @@ import LOGGER
 
 def sendCurrentRide(rideUrlPath,rideKey):
 	ride = {"totalDistance": 0}
-
 	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/rides/' + rideUrlPath + '.json'
 	jsonData = {rideKey: ride}
-
 	x = requests.patch(url, json=jsonData)
 	statusCode = x.status_code
 	if statusCode == 200:
 		LOGGER.setRideSent(1)
 
+def sendFirstLocation(firstLocation):
+	ride = {"firstLocation": firstLocation}
+	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/rides/' + rideUrlPath + '.json'
+	jsonData = {rideKey: ride}
+	x = requests.patch(url, json=jsonData)
+
 def updateBase(numberOfRides, lastRideKey, lastRideUrlPath):
 	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/base.json'
 	jsonData = {"numberOfRides": numberOfRides, "lastRideKey": lastRideKey, "lastRideUrlPath": lastRideUrlPath}
-
 	response = requests.patch(url, json=jsonData)
 
 def sendLocations(rideKey, part, timestamp, locationsArray):
 	url = 'https://carassistant-479b4-default-rtdb.europe-west1.firebasedatabase.app/locations/' + rideKey + '/' + 'part' + str(part) + '.json'
 	jsonData = {timestamp: locationsArray}
-
 	x = requests.patch(url, json=jsonData)
 
 def updateRideLastLocation(rideUrlPath, rideKey, lastLocation):

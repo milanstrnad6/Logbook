@@ -18,21 +18,27 @@ def start():
                                 cycle = 0
                                 part = part + 1
 
+                        rideUrlPath = LOGGER.rideUrlPath()
+                        rideKey = LOGGER.rideKey()
+
                         rideSent = LOGGER.rideSent()
-                        if rideSent == 0:
-                                rideUrlPath = LOGGER.rideUrlPath()
-                                print("SEND CURRENT RIDE...")
-                                rideKey = LOGGER.rideKey()
+                        if rideSent == 0:                                
                                 REST.sendCurrentRide(rideUrlPath,rideKey)
                                 numberOfRides = LOGGER.numberOfRides()
-                                print("UPDATE BASE...")
                                 REST.updateBase(numberOfRides, rideKey, rideUrlPath)
 
                         buffer = POINTS.load_allEvents()
-                        timestamp = TIMES.nowAsString()
-                        POINTS.reset()
-                        rideKey = LOGGER.rideKey()
-                        REST.sendLocations(rideKey, part, timestamp, buffer)
+                        if buffer.length >= 1:
+                                firstLocationSent = LOGGER.firstLocationSent()
+                                if firstLocationSent == 0:
+                                        firstLocation = buffer[0]
+                                        REST.sendFirstLocation(firstLocation)
+                                        LOGGER.setFirstLocationSent(1)
+
+                                timestamp = TIMES.nowAsString()
+                                POINTS.reset()
+                                rideKey = LOGGER.rideKey()
+                                REST.sendLocations(rideKey, part, timestamp, buffer)
                 except:
                         time.sleep(10)
                         continue

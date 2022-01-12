@@ -6,6 +6,7 @@ FILENAME_CURRENT_RIDE = '/home/pi/Desktop/Logbook4/Logbook/currentRide.txt'
 FILENAME_CURRENT_RIDE_ROW_INDEX_RIDEURLPATH = 0
 FILENAME_CURRENT_RIDE_ROW_INDEX_RIDEKEY = 1
 FILENAME_CURRENT_RIDE_ROW_INDEX_RIDESENT = 2
+FILENAME_CURRENT_RIDE_ROW_INDEX_FIRSTLOCATIONSENT = 3
 
 FILENAME_BASE = '/home/pi/Desktop/Logbook4/Logbook/base.txt'
 FILENAME_BASE_ROW_NUMBEROFRIDES = 0
@@ -27,6 +28,10 @@ def setRideSent(sent):
     rideSent = str(sent)
     FILES.saveline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_RIDESENT,rideSent)
 
+def setFirstLocationSent(sent):
+    firstLocationSent = str(sent)
+    FILES.saveline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_FIRSTLOCATIONSENT,firstLocationSent)
+
 def rideUrlPath():
     #return "2021/1/1/7"
     return FILES.loadline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_RIDEURLPATH).rstrip("\n")
@@ -37,6 +42,10 @@ def rideKey():
 
 def rideSent():
     rideSent = FILES.loadline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_RIDESENT).rstrip("\n")
+    return int(rideSent)
+
+def firstLocationSent():
+    rideSent = FILES.loadline(FILENAME_CURRENT_RIDE,FILENAME_CURRENT_RIDE_ROW_INDEX_FIRSTLOCATIONSENT).rstrip("\n")
     return int(rideSent)
 
 def numberOfRides():
