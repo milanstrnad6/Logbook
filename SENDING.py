@@ -28,9 +28,12 @@ def start():
                                 REST.updateBase(numberOfRides, rideKey, rideUrlPath)
 
                         buffer = POINTS.load_allEvents()
+                        print("BUFFER =")
+                        print(buffer)
                         print("BUFFER LENGTH =")
-                        print(buffer.length)
-                        if buffer.length >= 1:
+                        bufferLength = len(buffer)
+                        print(bufferLength)
+                        if bufferLength >= 1:
                                 firstLocationSent = LOGGER.firstLocationSent()
                                 if firstLocationSent == 0:
                                         firstLocation = buffer[0]

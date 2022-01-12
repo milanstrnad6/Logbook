@@ -66,7 +66,7 @@ def start():
                                                                 print " "
                                                                 POINTS.savePOINT(rideKey,northValueAsString,eastValueAsString)
                         else:
-                                print("GNGGS NOT PRESENT")
+                                print("GNGGA NOT PRESENT")
                         if  num < 4: # the string have ok
                                 print num
                                 time.sleep(0.5)
