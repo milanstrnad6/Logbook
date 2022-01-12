@@ -33,7 +33,7 @@ def start():
                                 firstLocationSent = LOGGER.firstLocationSent()
                                 if firstLocationSent == 0:
                                         firstLocation = buffer[0]
-                                        REST.sendFirstLocation(rideKey, firstLocation)
+                                        REST.sendFirstLocation(rideUrlPath, rideKey, firstLocation)
                                         LOGGER.setFirstLocationSent(1)
 
                                 timestamp = TIMES.nowAsString()
