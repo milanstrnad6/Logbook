@@ -36,6 +36,8 @@ def savePOINT(rideKey,north,east):
 
 def updateDISTANCE(northValue,eastValue):
     distance = LOGGER.distance
+    print("DISTANCE=")
+    print(distance)
     lastN = LOGGER.lastN()
     lastE = LOGGER.lastE()
     if lastN != 0.0:
@@ -50,6 +52,8 @@ def updateDISTANCE(northValue,eastValue):
         print(eastValue)
         coord2 = (northValue, eastValue)
         result = geopy.distance.geodesic(coord1, coord2)
+        print("RESULT=")
+        print(result)
         newDistance = distance + result
         LOGGER.setDistance(newDistance)
     else:
